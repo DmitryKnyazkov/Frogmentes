@@ -16,5 +16,10 @@
     <fragment android:id="@+id/FragmentBlankSecond"
         android:name="com.example.frogmentes.BlankFragmentSecond"
         tools:layout="@layout/fragment_blank_second"/>
+    <fragment
+        android:id="@+id/blankFragmentThird"
+        android:name="com.example.frogmentes.BlankFragmentThird"
+        android:label="fragment_blank_third"
+        tools:layout="@layout/fragment_blank_third" />
 
 </navigation>

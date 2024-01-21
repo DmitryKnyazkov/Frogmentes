@@ -24,7 +24,9 @@ class BlankFragmentThird : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.FB1.text =
+        
+        val feedback = arguments?.getString("feedback")
+        binding.FB1.text = feedback
     }
 
     override fun onDestroyView() {
