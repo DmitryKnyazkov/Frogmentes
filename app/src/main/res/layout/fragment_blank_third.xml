@@ -5,23 +5,17 @@
     android:layout_height="match_parent"
     tools:context=".BlankFragmentThird">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/FB1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
 
-    <TextView
-        android:id="@+id/FB2"
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
-
-    <TextView
-        android:id="@+id/FB3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="" />
+        android:id="@+id/buttonBack"
+        android:layout_gravity="bottom|center"
+        android:text="Начать заново"/>
 
 </FrameLayout>

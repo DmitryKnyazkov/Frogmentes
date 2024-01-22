@@ -6,10 +6,8 @@ object QuizStorage {
         Locale.En -> quizEn
     }
 
-    fun answer(quiz: Quiz, answers: List<Int>): String = quiz
-        .questions
-        .zip(answers) { question, index -> question.feedback[index] }
-        .joinToString(separator = " ")
+    fun answer(quiz: Quiz, answers: List<Int>): String = quiz.questions.zip(answers) { question, index -> question.feedback[index] }
+        .joinToString(separator = " \n")
 
     enum class Locale {
         Ru, En

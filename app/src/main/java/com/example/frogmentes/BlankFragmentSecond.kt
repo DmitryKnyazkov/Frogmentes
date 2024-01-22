@@ -74,6 +74,10 @@ class BlankFragmentSecond : Fragment() {
             findNavController().navigate(R.id.blankFragmentThird, bundle)
         }
 
+        binding.buttonbackStart.setOnClickListener {
+            findNavController().navigate(R.id.FragmentBlankFirst)
+        }
+
 //        binding..setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.container, BlankFragmentFirst())
 //            .commit() }
 //
@@ -82,6 +86,10 @@ class BlankFragmentSecond : Fragment() {
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }
