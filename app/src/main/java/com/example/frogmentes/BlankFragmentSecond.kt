@@ -71,7 +71,7 @@ class BlankFragmentSecond : Fragment() {
 //            val bundle = bundleOf("feedback" to feedback)
             val bundle = Bundle()
             bundle.putString("feedback", feedback)
-            findNavController().navigate(R.id.blankFragmentThird, bundle)
+            findNavController().navigate(R.id.action_FragmentBlankSecond_to_blankFragmentThird, bundle)
         }
 
         binding.buttonbackStart.setOnClickListener {

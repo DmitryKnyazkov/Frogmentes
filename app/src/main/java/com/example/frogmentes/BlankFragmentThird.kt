@@ -30,7 +30,7 @@ class BlankFragmentThird : Fragment() {
         binding.FB1.text = feedback
 
         binding.buttonBack.setOnClickListener {
-            findNavController().navigate(R.id.FragmentBlankSecond)
+            findNavController().navigate(R.id.action_blankFragmentThird_to_FragmentBlankSecond)
 
         }
     }
