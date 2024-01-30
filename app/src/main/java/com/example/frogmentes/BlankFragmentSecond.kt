@@ -30,6 +30,7 @@ class BlankFragmentSecond : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
 
+        binding.button.isEnabled = false
 
         binding.question1.text = quiz.questions[0].question
         binding.RB11.text = quiz.questions[0].answers[0]
@@ -61,15 +62,18 @@ class BlankFragmentSecond : Fragment() {
         binding.RB34.text = quiz.questions[2].answers[3]
         binding.RB34.id = 3
 
-        changeRadiobaton()
+        binding.answer1.setOnCheckedChangeListener { group, checkedId -> changeRadiobaton() }
+        binding.answer2.setOnCheckedChangeListener { group, checkedId -> changeRadiobaton() }
+        binding.answer3.setOnCheckedChangeListener { group, checkedId -> changeRadiobaton() }
 
         binding.button.setOnClickListener {
+            val answersList = answersList()
+            val feedback = QuizStorage.answer(quiz, answersList)
 
-//            val feedback = QuizStorage.answer(quiz, answersList)
-            
-//            val bundle = bundleOf("feedback" to feedback)
             val bundle = Bundle()
-//            bundle.putString("feedback", feedback)
+//            val bundle = bundleOf("feedback" to feedback)
+
+            bundle.putString("feedback", feedback)
             findNavController().navigate(R.id.action_FragmentBlankSecond_to_blankFragmentThird, bundle)
         }
 
@@ -82,12 +86,18 @@ class BlankFragmentSecond : Fragment() {
 //
     }
 
-    fun changeRadiobaton() {
+    fun answersList (): List<Int> {
         val answersList = listOf(
             binding.answer1.checkedRadioButtonId,
             binding.answer2.checkedRadioButtonId,
             binding.answer3.checkedRadioButtonId,
         )
+        return answersList
+    }
+
+    fun changeRadiobaton() {
+
+        val answersList = answersList()
 
         if (answersList[0] in 0 .. 3 && answersList[1] in 0 .. 3 && answersList[2] in 0 .. 3) {
             binding.button.isEnabled = true
