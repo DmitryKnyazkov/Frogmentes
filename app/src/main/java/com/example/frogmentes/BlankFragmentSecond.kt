@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.frogmentes.databinding.FragmentBlankSecondBinding
 
@@ -28,6 +29,7 @@ class BlankFragmentSecond : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
+
 
         binding.question1.text = quiz.questions[0].question
         binding.RB11.text = quiz.questions[0].answers[0]
@@ -58,19 +60,16 @@ class BlankFragmentSecond : Fragment() {
         binding.RB33.id = 2
         binding.RB34.text = quiz.questions[2].answers[3]
         binding.RB34.id = 3
-        
+
+        changeRadiobaton()
 
         binding.button.setOnClickListener {
-            val answersList = listOf(
-                binding.answer1.checkedRadioButtonId,
-                binding.answer2.checkedRadioButtonId,
-                binding.answer3.checkedRadioButtonId,
-            )
-            val feedback = QuizStorage.answer(quiz, answersList)
+
+//            val feedback = QuizStorage.answer(quiz, answersList)
             
 //            val bundle = bundleOf("feedback" to feedback)
             val bundle = Bundle()
-            bundle.putString("feedback", feedback)
+//            bundle.putString("feedback", feedback)
             findNavController().navigate(R.id.action_FragmentBlankSecond_to_blankFragmentThird, bundle)
         }
 
@@ -81,6 +80,20 @@ class BlankFragmentSecond : Fragment() {
 //        binding..setOnClickListener { parentFragmentManager.beginTransaction().replace(R.id.container, BlankFragmentFirst())
 //            .commit() }
 //
+    }
+
+    fun changeRadiobaton() {
+        val answersList = listOf(
+            binding.answer1.checkedRadioButtonId,
+            binding.answer2.checkedRadioButtonId,
+            binding.answer3.checkedRadioButtonId,
+        )
+
+        if (answersList[0] in 0 .. 3 && answersList[1] in 0 .. 3 && answersList[2] in 0 .. 3) {
+            binding.button.isEnabled = true
+        }
+        else { binding.button.isEnabled = false}
+
     }
 
     override fun onDestroyView() {
